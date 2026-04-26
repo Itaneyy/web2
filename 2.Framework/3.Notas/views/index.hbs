@@ -1,0 +1,10 @@
+<h1>Notas</h1>
+<p><a href="/">Home</a> | <a href="/sobre">Sobre</a> | <a href="/nota/cria">Criar Nota</a></p>
+<ul>
+<!-- each é como um laço for, percorrendo todas as notas -->
+{{#each notas}}
+<li>{{this.chave}}:
+<a href="/nota/consulta/{{this.chave}}">{{this.titulo}}</a>
+</li>
+{{/each}}
+</ul>

@@ -1,0 +1,85 @@
+<div
+  style="width: 60%;
+margin: 0 auto; 
+ "
+>
+
+  <h1>Geranciador de Atividades v 2.0</h1>
+  <nav align="right">
+    <a href="/">Home</a>
+    |
+    <a href="/Atividade/cria">Criar nova atividade</a>
+  </nav>
+
+  {{#if vazio}}
+    <p>
+
+      <b><i>Ainda não tem nenhuma atividade cadastrada</i></b>
+    </p>
+    <p>
+      <a href="/Atividade/cria">Cadastre sua primeira atividade</a>
+
+    </p>
+  {{else}}
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Alterar Status</th>
+          <th>Prioridade</th>
+          <th>Atividade</th>
+          <th colspan="3">Operações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each lista}}
+          <tr>
+            <td>
+              {{#if this.executada}}
+                <a href="/atividade/toggle/{{this.id}}">Executada</a>
+              {{else}}
+                <a href="/atividade/toggle/{{this.id}}">Não executada</a>
+              {{/if}}
+            </td>
+
+            <td>{{this.prioridade}}</td>
+
+            <td>
+              {{#if this.executada}}
+                {{this.titulo}}
+              {{else}}
+                <b>{{this.titulo}}</b>
+              {{/if}}
+            </td>
+
+            <td><a href="/atividade/consulta/{{this.id}}">Visualizar</a></td>
+            <td><a href="/atividade/altera/{{this.id}}">Editar</a></td>
+            <td><a href="/atividade/deleta/{{this.id}}">Excluir</a></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/if}}
+</div>
+{{!-- 
+<div style="background: yellow; color: black; padding: 10px;">
+  DEBUG:
+  <br />Valor de 'vazio':
+  <b>{{vazio}}</b>
+  <br />Quantos itens na 'lista':
+  <b>{{lista.length}}</b>
+  <div style="padding: 5px;">
+
+    {{#each lista}}
+      <p>
+        {{this.id}}
+        {
+
+        {{this.titulo}}
+        {{this.executada}}
+        {{this.prioridade}}
+
+        }
+      </p>
+    {{/each}}
+  </div>
+</div> --}}
