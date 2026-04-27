@@ -4,32 +4,45 @@
   <a href="/sobre">Sobre</a>
   |
   <a href="/nota/cria">Criar Nota</a></p>
-<table>
-  <thead>
-    <tr>
-      <th style="width: 100px;">Chave</th>
-      <th>Título</th>
-      <th style="width: 100px;">Alterar Status</th>
-    </tr>
-  </thead>  
-  <tbody>
-    {{#each notas}}
+
+{{#if vazio}}
+  <p>
+
+    <b><i>Ainda não tem nenhuma atividade cadastrada</i></b>
+  </p>
+  <p>
+    <a href="/nota/cria">Cadastre sua primeira atividade</a>
+
+  </p>
+{{else}}
+  <table>
+    <thead>
       <tr>
-        {{#if this.lida}}
-          <td style="text-align: center;">{{this.chave}}</td>
-          <td><a href="/nota/consulta/{{this.chave}}">{{this.titulo}}</a></td>
-          <td style="text-align: center;"><a
-              href="/nota/naolida/{{this.chave}}"
-            >não lida</a></td>
-        {{else}}
-          <td style="text-align: center;"><b>{{this.chave}}</b></td>
-          <td><a href="/nota/consulta/{{this.chave}}"><b
-              >{{this.titulo}}</b></a></td>
-          <td style="text-align: center;"><b><a
-                href="/nota/lida/{{this.chave}}"
-              >lida</a></b></td>
-        {{/if}}
+        <th style="width: 100px;">Chave</th>
+        <th>Título</th>
+        <th style="width: 100px;">Alterar Status</th>
       </tr>
-    {{/each}}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {{#each notas}}
+        <tr>
+          {{#if this.lida}}
+            <td style="text-align: center;">{{this.chave}}</td>
+            <td><a href="/nota/consulta/{{this.chave}}">{{this.titulo}}</a></td>
+            <td style="text-align: center;"><a
+                href="/nota/naolida/{{this.chave}}"
+              >não lida</a></td>
+          {{else}}
+            <td style="text-align: center;"><b>{{this.chave}}</b></td>
+            <td><a href="/nota/consulta/{{this.chave}}"><b
+                >{{this.titulo}}</b></a></td>
+            <td style="text-align: center;"><b><a
+                  href="/nota/lida/{{this.chave}}"
+                >lida</a></b></td>
+          {{/if}}
+        </tr>
+      {{/each}}
+    </tbody>
+
+  </table>
+{{/if}}

@@ -15,8 +15,9 @@ exports.cria_post = async function (req, res) {
   var chave = req.body.chave;
   var titulo = req.body.titulo;
   var texto = req.body.texto;
+  var importancia = req.body.importancia;
   // cria a nota nota
-  await notas.cria(chave, titulo, texto);
+  await notas.cria(chave, titulo, importancia, texto);
   // redireciona para a página principal
   res.redirect("/");
 };
@@ -31,6 +32,7 @@ exports.consulta = async function (req, res) {
     titulo_pagina: "Consulta a Nota",
     chave: nota.chave,
     titulo: nota.titulo,
+    importancia: nota.importancia,
     texto: nota.texto,
   };
   // renderiza o arquivo dentro da pasta view
@@ -49,6 +51,7 @@ exports.altera_get = async function (req, res) {
     titulo: nota.titulo,
     texto: nota.texto,
     lida: nota.lida,
+    importancia: nota.importancia,
   };
   // renderiza o arquivo dentro da pasta view
   res.render("alteraNota", contexto);
@@ -61,11 +64,12 @@ exports.altera_post = async function (req, res) {
   var chave = req.body.chave;
   var titulo = req.body.titulo;
   var texto = req.body.texto;
+  var importancia = req.body.importancia;
   var lida;
   if (req.body.status === "on") lida = true;
   else lida = false;
   // atualiza a nota com a chave e o status também
-  await notas.atualiza(chave, titulo, texto, lida);
+  await notas.atualiza(chave, titulo, importancia, texto, lida);
   // redireciona para a página principal
   res.redirect("/");
 };
@@ -92,5 +96,20 @@ exports.naolida = async function (req, res) {
   var nota = await notas.consulta(chave);
   nota.lida = false;
   // redireciona para a página principal
+  res.redirect("/");
+};
+
+exports.confirmaExclusao_get = async function (req, res) {
+  var chave = req.params.chave_nota;
+  var nota = await notas.consulta(chave);
+  res.render("confirmaExclusao", {
+    chave: nota.chave,
+    titulo: nota.titulo,
+  });
+};
+
+exports.deleta_post = async function (req, res) {
+  const chave = req.body.chave;
+  await notas.deleta(chave); // Certifique-se que o modelo 'notas' está importado
   res.redirect("/");
 };
