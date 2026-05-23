@@ -1,0 +1,9 @@
+<h1>Confirmação de Exclusão</h1>
+<p>Tem certeza que deseja excluir a nota: <strong>{{titulo}}</strong>?</p>
+
+<form method="POST" action="/nota/deleta">
+  <input type="hidden" name="chave" value="{{chave}}" />
+  <button type="submit">Confirmar</button>
+
+  <a href="/nota/consulta/{{chave}}"><button type="button">Cancelar</button></a>
+</form>

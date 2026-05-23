@@ -1,0 +1,77 @@
+<nav class="navBack mb-4 p-3 w-100">
+
+  <div class="row align-items-center">
+
+    <div class="col-auto">
+      <h1 class="m-0">Notas</h1>
+    </div>
+
+    <div class="col">
+      <div class="d-flex gap-3 itens-gray">
+        <a href="/">Home</a>
+        <a href="/sobre">Sobre</a>
+        <a href="/nota/cria">Criar Nota</a>
+        <a href="/nota/criaNotasTeste">Criar Notas de Teste</a>
+      </div>
+    </div>
+
+  </div>
+
+</nav>
+<div class="ms-5">
+
+  <h2>Criação de uma nova nota de texto</h2>
+
+  <form method="POST" action="/nota/cria">
+
+    <div class="mb-2">
+      <p>
+        <label class="form-label" for="chave">Chave</label>
+      </p>
+      <p>
+        <input required type="text" name="chave" size="30" />
+      </p>
+    </div>
+
+    <div class="mb-2">
+      <p>
+        <label class="form-label" for="titulo">Título</label>
+      </p>
+      <p>
+        <input required type="text" name="titulo" size="60" />
+      </p>
+    </div>
+
+    <div class="mb-2">
+      <p>
+        <label class="form-label" for="importancia">Importância da Nota</label>
+      </p>
+      <p>
+        <input
+          type="number"
+          name="importancia"
+          id="importancia"
+          max="5"
+          min="1"
+          value="1"
+        />
+      </p>
+    </div>
+
+    <div class="mb-2">
+      <p>
+        <label class="form-label" for="texto">Texto da Nota</label>
+      </p>
+      <p>
+        <textarea rows="5" cols="57" name="texto"></textarea>
+      </p>
+    </div>
+
+    <div class="mb-2">
+      <button type="submit" class="btn btn-primary">Criar</button>
+      <a href="/" class="btn btn-secondary">Cancelar</a>
+
+    </div>
+
+  </form>
+</div>

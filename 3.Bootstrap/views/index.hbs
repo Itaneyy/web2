@@ -1,0 +1,96 @@
+<nav class="navBack mb-4 p-3 w-100">
+
+  <div class="row align-items-center">
+
+    <div class="col-auto">
+      <h1 class="m-0">Notas</h1>
+    </div>
+
+    <div class="col">
+      <div class="d-flex gap-3 itens-gray">
+        <a href="/">Home</a>
+
+        <a href="/sobre">Sobre</a>
+
+        <a href="/nota/cria">Criar Nota</a>
+
+        <a href="/nota/criaNotasTeste">Criar Notas de Teste</a>
+      </div>
+    </div>
+
+  </div>
+
+</nav>
+
+{{#if vazio}}
+  <p>
+    <b><i>Ainda não tem nenhuma atividade cadastrada</i></b>
+  </p>
+
+  <p>
+    <a href="/nota/cria">Cadastre sua primeira atividade</a>
+  </p>
+
+{{else}}
+
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-10">
+
+      <table class="table table-hover">
+        <thead>
+          <tr class="table-primary text-center">
+            <th style="width: 100px;">Chave</th>
+            <th>Título</th>
+            <th style="width: 100px;">Alterar Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each notas}}
+            <tr>
+              {{#if this.lida}}
+                <td class="text-center">{{this.chave}}</td>
+
+                <td>
+                  <a href="/nota/consulta/{{this.chave}}">
+                    {{this.titulo}}
+                  </a>
+                </td>
+
+                <td class="text-center">
+                  <a href="/nota/naolida/{{this.chave}}">
+                    não lida
+                  </a>
+                </td>
+
+              {{else}}
+
+                <td class="text-center">
+                  <b>{{this.chave}}</b>
+                </td>
+
+                <td>
+                  <a href="/nota/consulta/{{this.chave}}">
+                    <b>{{this.titulo}}</b>
+                  </a>
+                </td>
+
+                <td class="text-center">
+                  <b>
+                    <a href="/nota/lida/{{this.chave}}">
+                      lida
+                    </a>
+                  </b>
+                </td>
+
+              {{/if}}
+            </tr>
+          {{/each}}
+        </tbody>
+
+      </table>
+
+    </div>
+  </div>
+
+{{/if}}
