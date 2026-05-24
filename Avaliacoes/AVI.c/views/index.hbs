@@ -1,0 +1,33 @@
+    <div style="width: 60%; margin: 0 auto">
+      <h1 style="padding-left: 30%">Geranciador de Atividades v 1.0</h1>
+      <nav align="right">
+        <a href="/">Home</a>
+        |
+        <a href="/atividade/cria">Criar nova atividade</a>
+      </nav>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Prioridade</th>
+            <th>Atividade</th>
+            <th colspan="2">Operações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each lista}}
+          <tr>
+            <td class="autosize">{{this.prioridade}}</td>
+
+            <td class="sm">{{this.titulo}}</td>
+
+            <td class="autosize more">
+              <a href="/atividade/consulta/{{this.id}}">Visualizar</a>
+              |
+              <a href="/atividade/deleta/{{this.id}}">Excluir</a>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
