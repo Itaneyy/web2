@@ -1,87 +1,127 @@
 <nav class="navBack mb-4 p-3 w-100">
-
   <div class="row align-items-center">
 
     <div class="col-auto">
       <h1 class="m-0">Notas</h1>
     </div>
 
-    <div class="col">
+    <div class="col d-none d-lg-block">
       <div class="d-flex gap-3 itens-gray">
-        <a href="/">Home</a>
-
-        <a href="/sobre">Sobre</a>
-
-        <a href="/nota/cria">Criar Nota</a>
-
-        <a href="/nota/criaNotasTeste">Criar Notas de Teste</a>
+        <a href="/"> <i class="bi bi-house"></i>Home</a>
+        <a href="/sobre"> <i class="bi bi-info-square"></i> Sobre</a>
+        <a href="/nota/cria"> <i class="bi bi-envelope-plus"></i>Criar Nota</a>
+        <a href="/nota/criaNotasTeste"><i class="bi bi-file-plus"></i>Criar
+          Notas de Teste</a>
       </div>
+    </div>
+
+    <div class="col text-end d-block d-lg-none">
+      <button
+        class="btn border-0 p-0 text-dark"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#menuResponsivo"
+      >
+        <i class="bi bi-justify fs-2"></i>
+      </button>
     </div>
 
   </div>
-
 </nav>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="menuResponsivo">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Navegação</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="d-flex flex-column gap-3 itens-gray">
+      <a href="/"> <i class="bi bi-house"></i>Home</a>
+      <a href="/sobre"> <i class="bi bi-info-square"></i> Sobre</a>
+      <a href="/nota/cria"> <i class="bi bi-envelope-plus"></i>Criar Nota</a>
+      <a href="/nota/criaNotasTeste"><i class="bi bi-file-plus"></i>Criar Notas
+        de Teste</a>
+    </div>
+  </div>
+</div>
 
-<div class="ms-5">
+<div class="p-4">
+  <h2 class="mb-4">Alteração de nota de texto</h2>
 
-  <h2>Alteração de nota de texto</h2>
-  <form method="POST" action="/nota/altera/{{chave}}">
-    <div class="mb-2">
+  <form method="POST" action="/nota/altera/{{chave}}" class="row g-3">
 
-      <p><label class="form-label" for="chave">Chave</label></p>
-
-      <p><input
-          required
-          type="text"
-          name="chave"
-          value="{{chave}}"
-          size="30"
-          readonly
-        /></p>
+    <div class="col-12 col-md-6 col-lg-3">
+      <label class="form-label" for="chave">Chave</label>
+      <input
+        class="form-control"
+        required
+        type="text"
+        name="chave"
+        value="{{chave}}"
+        readonly
+      />
     </div>
 
-    <div class="mb-2">
-
-      <p><label class="form-label" for="titulo ">Título</label></p>
-      <p><input
-          required
-          type="text"
-          name="titulo"
-          value="{{titulo}}"
-          size="60"
-        /></p>
-      <div class="mb-2">
-
-      </div>
-      <p><label class="form-label" for="import ancia">Importancia da Nota</label></p>
-      <p><input
-          type="number"
-          name="importancia"
-          id="importancia"
-          max="5"
-          min="1"
-          value="{{importancia}}"
-        /></p>
+    <div class="col-12 col-md-6 col-lg-3">
+      <label class="form-label" for="importancia">Importância da Nota</label>
+      <input
+        class="form-control"
+        type="number"
+        name="importancia"
+        id="importancia"
+        max="5"
+        min="1"
+        value="{{importancia}}"
+      />
     </div>
-    <div class="mb-2">
 
-      <p><label class="form-label" for="texto">Texto da Nota</label></p>
-      <p><textarea rows="5" cols="57" name="texto">{{texto}}</textarea></p>
+    <div class="col-12 col-lg-6">
+      <label class="form-label" for="titulo">Título</label>
+      <input
+        class="form-control"
+        required
+        type="text"
+        name="titulo"
+        value="{{titulo}}"
+      />
+    </div>
 
-      <p>
+    <div class="col-12">
+      <label class="form-label" for="texto">Texto da Nota</label>
+      <textarea class="form-control" rows="5" name="texto">{{texto}}</textarea>
+    </div>
+
+    <div class="col-12">
+      <div class="form-check">
         {{#if lida}}
-          <input type="checkbox" name="status" id="status" checked />
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="status"
+            id="status"
+            checked
+          />
         {{else}}
-          <input type="checkbox" name="status" id="status" />
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="status"
+            id="status"
+          />
         {{/if}}
-        <label for="status">Nota Lida</label>
-      </p>
+        <label class="form-check-label" for="status">
+          Nota Lida
+        </label>
+      </div>
     </div>
-    <div class="mb-2">
-      <a href="/" class="btn btn-danger">Cancelar</a>
-      <button type="submit" class="btn btn-success">Criar</button>
 
+    <div class="col-12 d-flex gap-2">
+      <button type="submit" class="btn btn-success">Alterar</button>
+      <a href="/" class="btn btn-secondary">Cancelar</a>
     </div>
+
   </form>
-
 </div>

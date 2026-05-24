@@ -1,8 +1,0 @@
-<h5 class="mb-4"><strong>Deseja realmente  excluir a nota: " {{titulo}} "?</strong></h5>
-
-<form method="POST" action="/nota/deleta">
-  <input type="hidden" name="chave" value="{{chave}}" />
-  <button type="submit" class="btn btn-danger">Excluir</button>
-
-  <a href="/nota/consulta/{{chave}}" class="btn btn-secondary">Cancelar</a>
-</form>
