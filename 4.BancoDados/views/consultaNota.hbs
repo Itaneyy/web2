@@ -1,0 +1,110 @@
+<nav class="navBack mb-4 p-3 w-100">
+  <div class="row align-items-center">
+
+    <div class="col-auto">
+      <h1 class="m-0">Notas</h1>
+    </div>
+
+    <div class="col d-none d-lg-block">
+      <div class="d-flex gap-3 itens-gray">
+        <a href="/"> <i class="bi bi-house"></i>Home</a>
+        <a href="/sobre"> <i class="bi bi-info-square"></i> Sobre</a>
+        <a href="/nota/cria"> <i class="bi bi-envelope-plus"></i>Criar Nota</a>
+        <a href="/nota/criaNotasTeste"><i class="bi bi-file-plus"></i>Criar
+          Notas de Teste</a>
+      </div>
+    </div>
+
+    <div class="col text-end d-block d-lg-none">
+      <button
+        class="btn border-0 p-0 text-dark"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#menuResponsivo"
+      >
+        <i class="bi bi-justify fs-2"></i>
+      </button>
+    </div>
+
+  </div>
+</nav>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="menuResponsivo">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Navegação</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="d-flex flex-column gap-3 itens-gray">
+      <a href="/"> <i class="bi bi-house"></i>Home</a>
+      <a href="/sobre"> <i class="bi bi-info-square"></i> Sobre</a>
+      <a href="/nota/cria"> <i class="bi bi-envelope-plus"></i>Criar Nota</a>
+      <a href="/nota/criaNotasTeste"><i class="bi bi-file-plus"></i>Criar Notas
+        de Teste</a>
+    </div>
+  </div>
+</div>
+
+<h2>Consulta a Informações da Nota</h2>
+<br />
+<p><b>{{titulo}}</b></p>
+<p>{{texto}}</p>
+<p><b>Chave: </b>{{chave}}</p>
+<p>
+  <b>
+    Importância
+  </b>
+  {{importancia}}
+</p>
+<hr />
+<button
+  type="button"
+  class="btn btn-danger"
+  data-bs-toggle="modal"
+  data-bs-target="#modalExcluir"
+>
+  Deletar
+</button>
+
+<a href="/nota/altera/{{chave}}" class="btn btn-success">Alterar</a>
+<br /><br /><br />
+<a href="/">Voltar</a>
+
+<div class="modal fade" id="modalExcluir" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">
+          Exclusão de Nota
+        </h5>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal">
+        </button>
+      </div>
+
+      <div class="modal-body">
+        Deseja realmente excluir a nota: "
+        {{titulo}}
+        "?
+      </div>
+
+      <div class="modal-footer">
+        <form method="POST" action="/nota/deleta">
+          <input type="hidden" name="chave" value="{{chave}}" />
+          <button type="submit" class="btn btn-danger">Excluir</button>
+
+          <a
+            href="/nota/consulta/{{chave}}"
+            class="btn btn-secondary"
+          >Cancelar</a>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>

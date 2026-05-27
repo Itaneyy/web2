@@ -1,0 +1,42 @@
+<h2>Alteração de nota de texto</h2>
+<form method="POST" action="/atividade/altera/{{chave}}">
+
+  <p><label for="chave">ID</label></p>
+  <p><input
+      required
+      type="text"
+      name="chave"
+      value="{{chave}}"
+      size="30"
+      readonly
+    /></p>
+
+  <p><label for="titulo">Título</label></p>
+  <p><input
+      required
+      type="text"
+      name="titulo"
+      value="{{tittle}}"
+      size="60"
+    /></p>
+
+  <p><label for="texto">Descrição da atividade</label></p>
+  <p><textarea rows="5" cols="57" name="texto">{{texto}}</textarea></p>
+ 
+
+  <p>
+    <label for="prioridade">Prioridade da Atividade</label>
+  </p>
+  <p>
+
+    <select name="prioridade" id="prioridade">
+      <option value="Alta">Alta</option>
+      <option value="Média" selected>Média</option>
+      <option value="Baixa">Baixa</option>
+    </select>
+  </p>
+
+  <button type="submit">Alterar</button>
+
+  <a href="/">Cancelar</a>
+</form>

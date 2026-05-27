@@ -1,0 +1,137 @@
+<nav class="navBack mb-4 p-3 w-100">
+  <div class="row align-items-center">
+
+    <div class="col-auto">
+      <h1 class="m-0">Notas</h1>
+    </div>
+
+    <div class="col d-none d-lg-block">
+      <div class="d-flex gap-3 itens-gray">
+        <a href="/"> <i class="bi bi-house"></i>Home</a>
+        <a href="/sobre"> <i class="bi bi-info-square"></i> Sobre</a>
+        <a href="/nota/cria"> <i class="bi bi-envelope-plus"></i>Criar Nota</a>
+        <a href="/nota/criaNotasTeste"><i class="bi bi-file-plus"></i>Criar
+          Notas de Teste</a>
+      </div>
+    </div>
+
+    <div class="col text-end d-block d-lg-none">
+      <button
+        class="btn border-0 p-0 text-dark"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#menuResponsivo"
+      >
+        <i class="bi bi-justify fs-2"></i>
+      </button>
+    </div>
+
+  </div>
+</nav>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="menuResponsivo">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Navegação</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="d-flex flex-column gap-3 itens-gray">
+      <a href="/"> <i class="bi bi-house"></i>Home</a>
+      <a href="/sobre"> <i class="bi bi-info-square"></i> Sobre</a>
+      <a href="/nota/cria"> <i class="bi bi-envelope-plus"></i>Criar Nota</a>
+      <a href="/nota/criaNotasTeste"><i class="bi bi-file-plus"></i>Criar Notas
+        de Teste</a>
+    </div>
+  </div>
+</div>
+
+
+<div class="p-4">
+
+  <h2 class="mb-4">Criação de uma nova nota de texto</h2>
+
+  <form method="POST" action="/nota/cria">
+
+    <div class="mb-3">
+
+      <label class="form-label" for="chave">
+        Chave
+      </label>
+
+      <input
+        class="form-control"
+        required
+        type="text"
+        name="chave"
+        size="30"
+      />
+
+    </div>
+
+    <div class="mb-3">
+
+      <label class="form-label" for="titulo">
+        Título
+      </label>
+
+      <input
+        class="form-control"
+        required
+        type="text"
+        name="titulo"
+        size="60"
+      />
+
+    </div>
+
+    <div class="mb-3">
+
+      <label class="form-label" for="importancia">
+        Importância da Nota
+      </label>
+
+      <input
+        class="form-control"
+        type="number"
+        name="importancia"
+        id="importancia"
+        max="5"
+        min="1"
+        value="1"
+      />
+
+    </div>
+
+    <div class="mb-4">
+
+      <label class="form-label" for="texto">
+        Texto da Nota
+      </label>
+
+      <textarea
+        class="form-control"
+        rows="5"
+        cols="57"
+        name="texto"
+      ></textarea>
+
+    </div>
+
+    <div class="d-flex gap-2">
+
+      <button type="submit" class="btn btn-primary">
+        Criar
+      </button>
+
+      <a href="/" class="btn btn-secondary">
+        Cancelar
+      </a>
+
+    </div>
+
+  </form>
+
+</div>

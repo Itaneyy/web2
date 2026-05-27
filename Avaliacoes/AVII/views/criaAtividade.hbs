@@ -1,0 +1,35 @@
+<h2>Criação de nova atividade</h2>
+
+<form action="/atividade/cria" method="POST">
+  <p>
+    <label for="titulo">Título</label>
+  </p>
+  <input type="text" name="titulo" id="titulo" style="width: 33%;" required />
+
+  <p>
+    <label for="desc">Descrição da atividade</label>
+  </p>
+  <textarea
+    name="desc"
+    id="desc"
+    rows="10"
+    style="width: 33%;"
+    required
+  ></textarea>
+
+  <p>
+    <label for="prioridade">Prioridade da atividade</label>
+  </p>
+  <select name="prioridade" id="prioridade">
+    <option value="Alta">Alta</option>
+    <option value="Média" selected>Média</option>
+    <option value="Baixa">Baixa</option>
+  </select>
+
+  <div style="margin-top: 20px;">
+    <button type="submit">Criar</button>
+    <a href="/">
+      Cancelar
+    </a>
+  </div>
+</form>
