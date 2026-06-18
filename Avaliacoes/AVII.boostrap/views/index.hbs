@@ -1,0 +1,56 @@
+<div style="width: 80%; margin: 0 auto">
+  <nav align="right" class="nav nav-pills mb-5">
+    <a href="/" class="flex-sm-fill text-sm-center nav-link active"><i
+        class="bi bi-house"
+      ></i>Home</a>
+
+    <a href="/ajuda" class="flex-sm-fill text-sm-center nav-link"><i
+        class="bi bi-info-square"
+      ></i>Ajuda</a>
+    <a href="/atividade/cria " class="flex-sm-fill text-sm-center nav-link">
+      <i class="bi bi-envelope-plus"></i>
+      Criar nova atividade</a>
+
+    <a href="/prioridadeAlta" class="flex-sm-fill text-sm-center nav-link">
+      <i class="bi bi-exclamation-circle"></i>Prioridade Alta</a>
+
+  </nav>
+  <h1 class="text-center">Geranciador de Atividades v 2.0</h1>
+
+  <table class="table table-success table-striped">
+    <thead>
+      <tr>
+        <th>Prioridade</th>
+        <th>Atividade</th>
+        <th colspan="2" class="text-center">Operações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each lista}}
+        <tr>
+          <td class="autosize">{{this.prioridade}}</td>
+
+          <td class="sm w-4">{{this.titulo}}</td>
+
+
+
+          <td class="text-end">
+            <a href="/atividade/consulta/{{this.id}}" class="btn btn-info align-self-center"><i
+                class="bi bi-eye"
+              ></i>Visualizar</a>
+
+            <a href="/atividade/altera/{{this.id}}" class="btn btn-warning align-self-center"><i
+                class="bi bi-pencil"
+              ></i>Alterar</a>
+            <a href="/atividade/deleta/{{this.id}}" class="btn btn-danger align-self-center" ><i
+                class="bi bi-trash"
+              ></i>Excluir</a>
+          </td>
+
+        
+
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,112 @@
+<nav class="navBack mb-4 p-3 w-100">
+  <div class="row align-items-center">
+
+    <div class="col-auto">
+      <h1 class="m-0">Notas</h1>
+    </div>
+
+    <div class="col d-none d-lg-block">
+      <div class="d-flex gap-3 itens-gray">
+        <a href="/"> <i class="bi bi-house"></i>Home</a>
+        <a href="/sobre"> <i class="bi bi-info-square"></i> Sobre</a>
+        <a href="/nota/cria"> <i class="bi bi-envelope-plus"></i>Criar Nota</a>
+        <a href="/nota/criaNotasTeste"><i class="bi bi-file-plus"></i>Criar
+          Notas de Teste</a>
+      </div>
+    </div>
+
+    <div class="col text-end d-block d-lg-none">
+      <button
+        class="btn border-0 p-0 text-dark"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#menuResponsivo"
+      >
+        <i class="bi bi-justify fs-2"></i>
+      </button>
+    </div>
+
+  </div>
+</nav>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="menuResponsivo">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Navegação</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="d-flex flex-column gap-3 itens-gray">
+      <a href="/"> <i class="bi bi-house"></i>Home</a>
+      <a href="/sobre"> <i class="bi bi-info-square"></i> Sobre</a>
+      <a href="/nota/cria"> <i class="bi bi-envelope-plus"></i>Criar Nota</a>
+      <a href="/nota/criaNotasTeste"><i class="bi bi-file-plus"></i>Criar Notas
+        de Teste</a>
+    </div>
+  </div>
+</div>
+
+<div class="p-4">
+  <h2 class="titulo">Alteração de nota de texto</h2>
+  <form method="POST" action="/nota/altera/{{nota.chave}}">
+    <label for="chave" class="form-label">Chave</label>
+    <input
+      type="text"
+      name="chave"
+      value="{{nota.chave}}"
+      size="30"
+      class="form-control"
+      readonly
+    />
+    <label for="titulo" class="form-label">Título</label>
+    <input
+      type="text"
+      name="titulo"
+      value="{{nota.titulo}}"
+      size="60"
+      class="form-control"
+    />
+    <label for="importancia" class="form-label">Importância da Nota</label>
+    <input
+      type="number"
+      name="importancia"
+      value="{{nota.importancia}}"
+      max="5"
+      min="1"
+      class="form-control"
+    />
+    <label for="texto" class="form-label">Texto da Nota</label>
+    <textarea
+      rows="5"
+      cols="57"
+      name="texto"
+      class="form-control"
+    >{{nota.texto}}</textarea>
+    <div class="form-check">
+      {{#if nota.lida}}
+        <input
+          type="checkbox"
+          name="status"
+          id="status"
+          class="form-check-input"
+          checked
+        />
+      {{else}}
+        <input
+          type="checkbox"
+          name="status"
+          id="status"
+          class="form-check-input"
+        />
+      {{/if}}
+      <label for="status" class="form-check-label">Nota Lida</label>
+    </div>
+    <button type="submit" class="btn btn-success">Alterar</button>
+    <a href="/nota/consulta/{{nota.chave}}"><button
+        type="button"
+        class="btn btn-secondary"
+      >Cancelar</button></a>
+  </form>
+</div>

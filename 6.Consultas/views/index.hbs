@@ -1,0 +1,147 @@
+<nav class="navBack mb-4 p-3 w-100">
+  <div class="row align-items-center">
+
+    <div class="col-auto">
+      <h1 class="m-0">Notas</h1>
+    </div>
+
+    <div class="col d-none d-lg-block">
+      <div class="d-flex gap-3 align-items-center itens-gray">
+        <a href="/"><i class="bi bi-house"></i> Home</a>
+        <a href="/sobre"><i class="bi bi-info-square"></i> Sobre</a>
+        <a href="/nota/cria"><i class="bi bi-envelope-plus"></i> Criar Nota</a>
+        <a href="/nota/criaNotasTeste"><i class="bi bi-file-plus"></i>
+          Criar Notas de Teste</a>
+  {{!-- Não defini Action para enviar o post para a página onde está o usuário --}}
+        <form action="" method="POST" class="d-inline-block m-0">
+          <div class="input-group p-0">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Pesquise"
+              aria-label="Pesquise"
+              aria-describedby="basic-addon2"
+              id = "pesquisa"
+              name = "pesquisa"
+
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                type="submit"
+                name="pesquisaBtt"
+              >
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col text-end d-block d-lg-none">
+      <button
+        class="btn border-0 p-0 text-dark"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#menuResponsivo"
+      >
+        <i class="bi bi-justify fs-2"> </i>
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="menuResponsivo">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Navegação</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas">
+    </button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="d-flex flex-column gap-3 itens-gray">
+      <a href="/"> <i class="bi bi-house"> </i>Home</a>
+      <a href="/sobre"> <i class="bi bi-info-square"> </i> Sobre</a>
+      <a href="/nota/cria"> <i class="bi bi-envelope-plus"> </i>Criar Nota</a>
+      <a href="/nota/criaNotasTeste">
+        <i class="bi bi-file-plus"> </i>Criar Notas de Teste</a>
+    </div>
+  </div>
+</div>
+
+{{#if vazio}}
+  <p>
+    <b> <i>Ainda não tem nenhuma atividade cadastrada</i> </b>
+  </p>
+
+  <p>
+    <a href="/nota/cria">Cadastre sua primeira atividade</a>
+  </p>
+
+{{else}}
+
+  <!-- Tabela responsiva com bordas arredondadas -->
+  <div class="table-responsive border rounded">
+    <table class="table table-hover align-middle m-0 text-center">
+
+      <!-- Cabeçalho corrigido com tags th -->
+      <thead class="table-light fw-bold">
+        <tr>
+          <th
+            scope="col"
+            class="d-none d-lg-table-cell"
+            style="width: 15%;"
+          >Chave</th>
+          <th scope="col" class="text-start text-md-center">Título</th>
+          <th
+            scope="col"
+            class="d-none d-md-table-cell"
+            style="width: 15%;"
+          >Alterar Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#each notas}}
+          <tr style="font-size: 14px;">
+            {{#if this.lida}}
+              <td style="text-align: center;">{{this.chave}}</td>
+              <td>
+                <a
+                  href="/nota/consulta/{{this.chave}}"
+                  class="limpo"
+                >{{this.titulo}}</a>
+              </td>
+
+              <td style="text-align: center;">
+                <a href="/nota/naolida/{{this.chave}}" class="limpo">
+                  <i class="bi bi-envelope-fill"> </i>
+                </a>
+              </td>
+
+            {{else}}
+              <td style="text-align: center;"> <b>{{this.chave}}</b> </td>
+              <td>
+                <a href="/nota/consulta/{{this.chave}}" class="limpo">
+                  <b>{{this.titulo}}</b>
+                </a>
+              </td>
+
+              <td style="text-align: center;">
+                <b>
+                  <a href="/nota/lida/{{this.chave}}" class="limpo">
+                    <i class="bi bi-envelope-open"> </i>
+                  </a>
+                </b>
+              </td>
+
+            {{/if}}
+          </tr>
+        {{/each}}
+      </tbody>
+
+    </table>
+  </div>
+
+{{/if}}

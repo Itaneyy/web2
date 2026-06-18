@@ -1,0 +1,43 @@
+<div style="width: 80%; margin: 0 auto">
+
+  <nav align="right" class="nav nav-pills mb-5">
+    <a href="/" class="flex-sm-fill text-sm-center nav-link"><i
+        class="bi bi-house"
+      ></i>Home</a>
+
+    <a href="/ajuda" class="flex-sm-fill text-sm-center nav-link"><i
+        class="bi bi-info-square"
+      ></i>Ajuda</a>
+    <a href="/atividade/cria " class="flex-sm-fill text-sm-center nav-link">
+      <i class="bi bi-envelope-plus"></i>
+      Criar nova atividade</a>
+
+    <a
+      href="/prioridadeAlta"
+      class="flex-sm-fill text-sm-center nav-link active"
+    >
+      <i class="bi bi-exclamation-circle"></i>Prioridade Alta</a>
+
+  </nav>
+  <h2>Atividades com Prioridade Alta</h2>
+  <div class="border rounded overflow-hidden mb-3">
+    <ul>
+      {{#each lista}}
+
+        <li>
+          <div class="col-lg-2 d-none d-lg-block p-2">
+            <a href="/atividade/consulta/{{this.id}}">{{this.titulo}}</a>
+
+          </div>
+
+        </li>
+
+      {{/each}}
+    </ul>
+  </div>
+  <p>
+    <a href="/" class="btn btn-secondary"><i class="bi bi-arrow-left"></i>
+      Voltar</a>
+
+  </p>
+</div>
