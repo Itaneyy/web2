@@ -12,28 +12,63 @@
         <a href="/nota/cria"><i class="bi bi-envelope-plus"></i> Criar Nota</a>
         <a href="/nota/criaNotasTeste"><i class="bi bi-file-plus"></i>
           Criar Notas de Teste</a>
-  {{!-- Não defini Action para enviar o post para a página onde está o usuário --}}
-        <form action="" method="POST" class="d-inline-block m-0">
-          <div class="input-group p-0">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Pesquise"
-              aria-label="Pesquise"
-              aria-describedby="basic-addon2"
-              id = "pesquisa"
-              name = "pesquisa"
 
-            />
-            <div class="input-group-append">
-              <button
-                class="btn btn-outline-secondary"
-                type="submit"
-                name="pesquisaBtt"
-              >
-                <i class="bi bi-search"></i>
-              </button>
-            </div>
+        <button
+          class="btn btn-link text-decoration-none p-0 itens-gray"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#menuFiltro"
+          style="color: grey;"
+        >
+          <i class="bi bi-funnel"></i>
+          Filtro
+        </button>
+
+        <form action="/" method="POST" class="d-inline-block m-0">
+          <div class="input-group p-0">
+
+            {{#if campoEmpty}}
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Pesquise"
+                aria-label="Pesquise"
+                aria-describedby="basic-addon2"
+                id="pesquisa"
+                name="pesquisa"
+                value=""
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-outline-secondary"
+                  type="submit"
+                  name="btn_pesquisar"
+                >
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+            {{else}}
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Pesquise"
+                aria-label="Pesquise"
+                aria-describedby="basic-addon2"
+                id="pesquisa"
+                name="pesquisa"
+                value="{{entrada}}"
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-outline-secondary"
+                  type="submit"
+                  name="btn_cancelar"
+                >
+                  <i class="bi bi-x-circle"></i>
+                </button>
+              </div>
+            {{/if}}
+
           </div>
         </form>
       </div>
@@ -66,7 +101,193 @@
       <a href="/nota/cria"> <i class="bi bi-envelope-plus"> </i>Criar Nota</a>
       <a href="/nota/criaNotasTeste">
         <i class="bi bi-file-plus"> </i>Criar Notas de Teste</a>
+      <button
+        class="btn btn-link text-start text-decoration-none p-0 itens-gray"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#menuFiltro"
+      >
+        <i class="bi bi-funnel"></i>
+        Filtro
+      </button>
     </div>
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="menuFiltro">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title"><i class="bi bi-funnel-fill"></i>
+      Filtro</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <form action="/" method="POST">
+
+      <div class="mb-4">
+        <h6 class="display-6">Estado da Nota</h6>
+
+        <div class="form-check">
+          {{#if filtros.lida}}
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="filtro_lida"
+              id="f_lida"
+              checked
+            />
+          {{else}}
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="filtro_lida"
+              id="f_lida"
+            />
+          {{/if}}
+          <label class="form-check-label" for="f_lida">Lidas</label>
+        </div>
+
+        <div class="form-check">
+          {{#if filtros.naolida}}
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="filtro_naolida"
+              id="f_naolida"
+              checked
+            />
+          {{else}}
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="filtro_naolida"
+              id="f_naolida"
+            />
+          {{/if}}
+          <label class="form-check-label" for="f_naolida">Não Lidas</label>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <h2 class="display-6">Importância da nota</h2>
+        
+        <div class="form-check">
+          {{#if filtros.imp1}}
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="filtro_imp1"
+              id="f_imp1"
+              checked
+            />
+          {{else}}
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="filtro_imp1"
+              id="f_imp1"
+            />
+          {{/if}}
+          <label class="form-check-label" for="f_imp1"> 1</label>
+        </div>
+
+        <div class="form-check">
+          {{#if filtros.imp2}}
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="filtro_imp2"
+              id="f_imp2"
+              checked
+            />
+          {{else}}
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="filtro_imp2"
+              id="f_imp2"
+            />
+          {{/if}}
+          <label class="form-check-label" for="f_imp2"> 2</label>
+        </div>
+
+        <div class="form-check">
+          {{#if filtros.imp3}}
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="filtro_imp3"
+              id="f_imp3"
+              checked
+            />
+          {{else}}
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="filtro_imp3"
+              id="f_imp3"
+            />
+          {{/if}}
+          <label class="form-check-label" for="f_imp3"> 3</label>
+        </div>
+
+        <div class="form-check">
+          {{#if filtros.imp4}}
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="filtro_imp4"
+              id="f_imp4"
+              checked
+            />
+          {{else}}
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="filtro_imp4"
+              id="f_imp4"
+            />
+          {{/if}}
+          <label class="form-check-label" for="f_imp4">4</label>
+        </div>
+
+        <div class="form-check">
+          {{#if filtros.imp5}}
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="filtro_imp5"
+              id="f_imp5"
+              checked
+            />
+          {{else}}
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="filtro_imp5"
+              id="f_imp5"
+            />
+          {{/if}}
+          <label class="form-check-label" for="f_imp5">5</label>
+        </div>
+      </div>
+
+      <button type="submit" name="btn_filtrar" class="btn btn-primary w-100">
+        Aplicar Filtros
+      </button>
+
+      <button
+        type="submit"
+        name="btn_cancelar"
+        class="btn btn-outline-secondary w-100 mt-2"
+      >
+        Limpar Filtros
+      </button>
+
+    </form>
   </div>
 </div>
 
@@ -78,14 +299,11 @@
   <p>
     <a href="/nota/cria">Cadastre sua primeira atividade</a>
   </p>
-
 {{else}}
 
-  <!-- Tabela responsiva com bordas arredondadas -->
   <div class="table-responsive border rounded">
     <table class="table table-hover align-middle m-0 text-center">
 
-      <!-- Cabeçalho corrigido com tags th -->
       <thead class="table-light fw-bold">
         <tr>
           <th
@@ -119,7 +337,6 @@
                   <i class="bi bi-envelope-fill"> </i>
                 </a>
               </td>
-
             {{else}}
               <td style="text-align: center;"> <b>{{this.chave}}</b> </td>
               <td>
@@ -135,7 +352,6 @@
                   </a>
                 </b>
               </td>
-
             {{/if}}
           </tr>
         {{/each}}

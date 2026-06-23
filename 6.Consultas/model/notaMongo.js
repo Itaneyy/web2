@@ -3,10 +3,20 @@ const mongodb = require("mongodb");
 // cria uma instância do cliente do mongo
 const ClienteMongo = mongodb.MongoClient;
 var cliente;
+
 // estabelece conexão com o Banco de Dados
 const conexao_bd = async () => {
-  if (!cliente)
+  if (!cliente) {
+    // 1. Conecta ao servidor MongoDB
     cliente = await ClienteMongo.connect("mongodb://127.0.0.1:27017");
+
+    // 2. Garante que o índice de texto seja criado assim que conectar
+    const colecao = bd().collection("notas");
+    await colecao.createIndex({ titulo: "text" });
+    console.log(
+      "-> Conectado ao MongoDB e índice 'text' garantido com sucesso!",
+    );
+  }
 };
 
 // retorna o referência para o banco de dados da aplicação
@@ -34,6 +44,12 @@ class NotaMongo {
         },
       },
     );
+  }
+  // Exemplo de função a ter no seu notaMongo.js
+  async filtrar(condicoes) {
+    const colecao = bd().collection("notas");
+    // Passa o objeto dinâmico gerado no controller diretamente para o find() do Mongo [cite: 53, 120]
+    return await colecao.find(condicoes).toArray();
   }
 
   async cria(nota) {
@@ -87,10 +103,12 @@ class NotaMongo {
     return qtd;
   }
 
-  async query(obj){
+  async query(obj) {
     await conexao_bd();
-    const colecao = bd().collection("notas")
-    var notas  = colecao.find(obj).toArray();
+    const colecao = bd().collection("notas");
+
+    // Executa a busca textual diretamente
+    var notas = await colecao.find({ $text: { $search: obj } }).toArray();
     return notas;
   }
 }

@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="nav nav-pills nav-fill w-100">
+      <a class="nav-item nav-link active" aria-current="page" href="/">
+        <i class="bi bi-house"></i> Home
+      </a>
+      <a class="nav-item nav-link" href="/ajuda">
+        <i class="bi bi-info-square"></i> Ajuda
+      </a>
+      <a class="nav-item nav-link" href="/atividade/criar">
+        <i class="bi bi-envelope-plus"></i> Criar Atividade
+      </a>
+      <a class="nav-item nav-link" href="/prioridadeAlta">
+        <i class="bi bi-exclamation-octagon"></i> Prioridade Alta
+      </a>
+    </div>
+  </div>
+</nav>
+<h1 align="center">Gerenciador de Atividades v 2.0</h1>
+
+<table align="center" class="table table-primary table-striped table-hover">
+    <tr>
+        <th width="120" align="left">
+            Prioridade
+        </th>
+
+        <th width="300" align="left">
+            Atividade
+        </th>
+
+        <th width="220" align="center">
+            Operações
+        </th>
+        
+    </tr>
+    {{#each atividades}}
+    <tr>
+        <td align="center">{{prioridade}}</td>
+        <td align="left">{{titulo}}</td>
+        <td align="center"> <p><button class="btn btn-info"><a href="/atividade/consultar/{{id}}"><i class="bi bi-eye"></i> Vizualizar</a></button> 
+        <button class="btn btn-warning"><a href="/atividade/alterar/{{id}}"><i class="bi bi-pencil"></i> Alterar</a></button> 
+        <button class="btn btn-danger"><a href="/atividade/excluir/{{id}}"><i class="bi bi-trash"></i> Excluir</a></button></td>
+    </p>
+    </tr>
+    {{/each}}
+</table>

@@ -1,0 +1,70 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+.campo-texto{
+    width: 500px;
+}
+
+.campo-texto-area{
+    width: 500px;
+    height: 120px;
+}
+
+.btn_Criar{
+background-color: rgb(29, 44, 253);
+width: 100px;
+height: 25px;
+border-radius: 10%;
+color: #ffffff;
+border: 0;
+text-align: center;
+}
+.btn_Cinza{
+background-color: gray;
+width: 100px;
+height: 25px;
+border-radius: 10%;
+color: #ffffff;
+border: 0;
+text-align: center;
+}
+.btn_Alterar{
+background-color: rgb(255, 208, 0);
+width: 100px;
+height: 25px;
+border-radius: 10%;
+color: #000000;
+border: 0;
+text-align: center;
+}
+button>a{
+  color: #ffffff;
+  text-decoration: none;
+}
+.btn_Excluir{
+  color: #ffffff;
+  background-color: red;
+  width: 100px;
+height: 25px;
+border-radius: 10%;
+color: #000000;
+border: 0;
+text-align: center;
+}
+.btn_Vizualizar{ 
+background-color: #00B7FF;
+width: 100px;
+height: 25px;
+border-radius: 10%;
+color: #000000;
+border: 0;
+text-align: center;
+
+}
