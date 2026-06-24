@@ -1,0 +1,53 @@
+body {
+  padding: 50px;
+  font:
+    14px "Lucida Grande",
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+
+button > a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+body {
+  padding: 50px;
+  font:
+    14px "Lucida Grande",
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+/* table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}*/
+table {
+  margin-top: 80px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.autosize {
+  text-align: center;
+  width: 150px;
+  height: 20px;
+}
+.more {
+  width: 200px;
+}
+.sm {
+  width: 250px;
+}
