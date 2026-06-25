@@ -1,0 +1,114 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="nav nav-pills nav-fill w-100">
+      <a class="nav-item nav-link active" aria-current="page" href="/">
+        <i class="bi bi-house"></i>
+        Home
+      </a>
+      <a class="nav-item nav-link" href="/ajuda">
+        <i class="bi bi-info-square"></i>
+        Ajuda
+      </a>
+      <a class="nav-item nav-link" href="/atividade/criar">
+        <i class="bi bi-envelope-plus"></i>
+        Criar Atividade
+      </a>
+      <a class="nav-item nav-link" href="/prioridadeAlta">
+        <i class="bi bi-exclamation-octagon"></i>
+        Prioridade Alta
+      </a>
+    </div>
+  </div>
+</nav>
+<h1 class="mt-4" align="center">Gerenciador de Atividades v 2.0</h1>
+
+<div>
+  {{#if todosOsFiltrosLigados}}
+    <form action="" method="POST">
+      <button class="btn btn-danger" type="button" name="botao_cancelarFiltros">
+        <i class="bi bi-x-circle"></i>
+        Cancelar Filtro
+      </button>
+    </form>
+  {{else}}
+    <p>
+
+      <b>
+        <i class="bi bi-funnel"></i>
+        Filtrar por :
+        {{!-- Action vazio joga a requisição para a página atual! --}}
+        <form action="" method="POST">
+
+          <button
+            class="btn btn-outline-danger"
+            name="prioridadeAlta"
+            type="submit"
+          >
+            Prioridade Alta
+          </button>
+          <button
+            class="btn btn-outline-warning"
+            name="prioridadeMedia"
+            type="submit"
+          >
+            Prioridade Média
+          </button>
+          <button
+            class="btn btn-outline-success"
+            name="prioridadeBaixa"
+            type="submit"
+          >
+            Prioridade Baixa
+          </button>
+
+        </form>
+
+      </b>
+    </p>
+  {{/if}}
+</div>
+
+<table class="table table-success table-striped table-hover table-md fs-6">
+  <thead>
+    <tr>
+      <th class="text-nowrap" style="width: 1%;">Prioridade</th>
+      <th class="w-100">Atividade</th>
+      <th class="text-center text-nowrap" colspan="2">Operações</th>
+    </tr>
+  </thead>
+  <tbody class="align-middle ">
+    {{#each atividades}}
+      <tr>
+        <td class="autosize text-nowrap">{{ this.prioridade }}</td>
+
+        <td class="sm w-4">{{ this.titulo }}</td>
+
+        <td class="text-end text-nowrap">
+          <a
+            class="btn btn-info align-self-center"
+            href="/atividade/consultar/{{ this._id }}"
+          >
+            <i class="bi bi-eye"></i>
+            Visualizar
+          </a>
+
+          <a
+            class="btn btn-warning align-self-center"
+            href="/atividade/alterar/{{ this._id }}"
+          >
+            <i class="bi bi-pencil"></i>
+            Alterar
+          </a>
+          <a
+            class="btn btn-danger align-self-center"
+            href="/atividade/excluir/{{ this._id }}"
+          >
+            <i class="bi bi-trash"></i>
+            Excluir
+          </a>
+        </td>
+
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
